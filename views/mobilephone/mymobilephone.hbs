@@ -1,0 +1,188 @@
+<style>
+    .mymobilephone, .oder1{
+        margin: 80px 100px;
+        
+    }
+    .table-mymobilephone{
+        width: 1000px;
+    }
+    img{
+        width: 50px;
+        
+    }
+    .name{
+        max-width: 150px;
+    }
+    .fade{
+        display: none;
+    }
+
+    .admin-option{
+        display: flex;
+        min-height: 561px;
+    }
+
+    .option{
+        margin-top: 80px;
+    }
+   .oder1{
+        display: none;
+        min-width: 1000px;
+    } 
+
+</style>
+
+<div class="admin-option">
+    <div class="option">
+        <ul class="nav flex-column">
+  <li class="nav-item">
+    <a class="nav-link active myphone-option" href="/admin">Điện thoại của tôi</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link oder-option" href="/admin/oder">Đơn đặt</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link add-phone" href="/admin/add">Thêm điện thoại mới</a>
+  </li>
+ 
+</ul>
+    </div>
+    <div class="myphone">
+        <div class="mymobilephone">
+            <div class="mymobile-title">
+                <b>
+                    Danh sách điện thoại
+                </b>
+            </div>
+            <table class="table table-mymobilephone">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th class="name" scope="col">Tên điện thoại</th>
+                    <th>Ảnh</th>
+                    <th scope="col">Hãng sản xuất</th>
+                    <th scope="col">Giá</th>
+                    <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {{#each mobilephone}}
+                    <tr>
+                    <th scope="row">{{sum @index 1}}</th>
+                    <td class="name">
+                        {{this.name}}
+                    </td>
+                    <td>
+                        <img src="{{this.img}}" alt="">
+                    </td>
+                    <td>{{this.creator}}</td>
+                    <td>{{this.price}}đ</td>
+                    <td>
+                        <a style="margin-right: 20px; text-decoration:none" class="btn btn-primary" href="/admin/edit/{{this.slug}}">sửa</a>
+                        <a href="#" class="modal-fade btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-phone-modal" data-bs-slug="{{this.slug}}">xóa</a>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <div class="oder1">
+            <b>Danh danh sách đơn đặt hàng</b>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Ảnh</th>
+                        <th scope="col">Giá</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each oder}}
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>ten</td>
+                        <td>{{this.name}}</td>
+                        <td>{{this.img}}</td>
+                        <td>{{this.price}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+</div>
+
+
+<!-- Modal -->
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="delete-phone-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="width: 400px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xóa điện thoại</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn chắc chắn muốn xóa ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+        <button type="button" id="btn-delete-phone" class="btn btn-danger">Xóa</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form name="delete-phone-form" method="post"></form>
+
+<script>
+    var modal = document.getElementsByClassName('modal-fade')[0];
+    var fade = document.getElementsByClassName('fade')[0];
+    modal.onclick = function () {
+        fade.style.display = "block";
+    }
+
+    var deleteForm = document.forms['delete-phone-form'];
+    var del = document.getElementById('delete-phone-modal');
+    var phoneslug;
+    del.addEventListener('show.bs.modal', function (event) {
+    // Button that triggered the modal
+    var button = event.relatedTarget
+    // Extract info from data-bs-* attributes
+    phoneslug = button.getAttribute('data-bs-slug');
+    console.log(phoneslug);
+    
+    })
+    
+    var btnDeletePhone = document.getElementById('btn-delete-phone');
+    btnDeletePhone.onclick = function(){
+        deleteForm.action = '/admin/'+phoneslug + '?_method=DELETE';
+        deleteForm.submit();
+    }
+
+    // xử lí các chức năng 
+    
+    var oderO = document.getElementsByClassName('oder-option')[0];
+    var myphoneO = document.getElementsByClassName('myphone-option')[0];
+
+    var oder1 = document.getElementsByClassName('oder1')[0];
+    console.log(oder1)
+    var myphone = document.getElementsByClassName('myphone')[0];
+    oderO.onclick = function(){
+        myphone.style.display = "none";
+        oder1.style.display = "block";
+    }
+    myphoneO.onclick = function(){
+        myphone.style.display = "block";
+        oder1.style.display = "none";
+    }
+    
+
+
+</script>

@@ -1,0 +1,88 @@
+<style>
+    .add-title, .form-add{
+        margin: 50px 200px;
+        font-weight: 700;
+    }
+</style>
+<div class="add-title">
+    <h2>chỉnh sửa</h2>
+</div>
+<form method="post" class="form-add" action="/admin/{{mobilephone.slug}}?_method=PUT">
+    <div class="mb-3">
+      <label  for="name" class="form-label">Tên điện thoại</label>
+      <input name="name"type="text" class="form-control" id="name" value="{{mobilephone.name}}">
+    </div>
+    <div class="mb-3">
+        <label  for="price" class="form-label">Giá tiền</label>
+        <input name="price"type="text" class="form-control" id="price" value="{{mobilephone.price}}">
+      </div>
+      <div class="mb-3">
+        <label  for="creator" class="form-label">Hãng sản xuất</label>
+        <input name="creator" type="text" class="form-control" id="creator" value="{{mobilephone.creator}}">
+      </div>
+      <div class="mb-3">
+        <label  for="img" class="form-label">Link ảnh</label>
+        <input name="img"type="text" class="form-control" id="img" value="{{mobilephone.img}}">
+      </div>
+      <div class="mb-3">
+        <label  for="system" class="form-label">Hệ điều hành</label>
+        <input name="system"type="text" class="form-control" id="system" value="{{mobilephone.system}}">
+      </div>
+      <div class="mb-3">
+        <label  for="cameraAfter" class="form-label">Camera trước</label>
+        <input name="cameraAfter"type="text" class="form-control" id="cameraAfter" value="{{mobilephone.cameraAfter}}">
+      </div>
+      <div class="mb-3">
+        <label  for="cameraBefore" class="form-label">Camera sau</label>
+        <input name="cameraBefore"type="text" class="form-control" id="cameraBefore" value="{{mobilephone.cameraBefore}}">
+      </div>
+      <div class="mb-3">
+        <label  for="ram" class="form-label">Ram</label>
+        <input name="ram"type="text" class="form-control" id="ram" value="{{mobilephone.ram}}">
+      </div>
+      <div class="mb-3">
+        <label  for="memory" class="form-label">Bộ nhớ trong</label>
+        <input name="memory"type="text" class="form-control" id="memory" value="{{mobilephone.memory}}">
+      </div>
+      <div class="mb-3">
+        <label  for="network" class="form-label">Mạng</label>
+        <input name="network"type="text" class="form-control" id="network" value="{{mobilephone.network}}">
+      </div>
+
+      <div class="mb-3">
+        <label  for="SIM" class="form-label">SIM</label>
+        <input name="SIM"type="text" class="form-control" id="SIM" value="{{mobilephone.SIM}}">
+      </div>
+
+      <div class="mb-3">
+        <label  for="battery" class="form-label">Dung lượng pin</label>
+        <input name="battery"type="text" class="form-control" id="battery" value="{{mobilephone.battery}}">
+      </div>
+
+      <div class="mb-3">
+        <label  for="chargingPort" class="form-label">Cổng sạc</label>
+        <input name="chargingPort"type="text" class="form-control" id="chargingPort" value="{{mobilephone.chargingPort}}">
+      </div>
+
+      <div class="mb-3">
+        <label  for="CPU" class="form-label">CPU</label>
+        <input name="CPU"type="text" class="form-control" id="CPU" value="{{mobilephone.CPU}}">
+      </div>
+
+      <div class="mb-3">
+        <label  for="GPU" class="form-label">GPU</label>
+        <input name="GPU"type="text" class="form-control" id="GPU" value="{{mobilephone.GPU}}">
+      </div>
+
+      <div class="mb-3">
+        <label  for="warranty" class="form-label">Bảo hành</label>
+        <input name="warranty"type="text" class="form-control" id="warranty" value="{{mobilephone.warranty}}">
+      </div>
+
+    <div class="mb-3 form-check">
+      <input name="discount" type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label  class="form-check-label" for="exampleCheck1">giảm giá</label>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

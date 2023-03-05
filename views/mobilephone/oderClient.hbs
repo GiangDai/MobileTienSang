@@ -1,0 +1,125 @@
+<style>
+    .oder{
+    width: 1200px;
+
+    margin:20px auto;
+}
+img{
+    width: 50px;
+    height: 50px;
+}
+
+
+.input-number-client-oder{
+  height: 30px;
+  width: 47px;
+  border-radius: 5px;
+  border: 1px solid #56CCF2;
+  background-color: #eee;
+  color: #333;
+  padding: 0;
+  text-align: center;
+  font-size: 1.2em;
+  margin-right: 25px;
+}
+.main-oder-client{
+  width: 80%;
+  align-items: center;
+  margin: auto;
+}
+.bold{
+  font-weight: 700;
+}
+/* /oder-client-store*/
+</style>
+<form method="post" action="/stored" class="main-oder-client">
+  <div class="oder-client">
+        <h2>Đặt hàng</h2>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Sản phẩm</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Giá tiền</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+            {{#each mobilephone}}
+              <tr class="product-oder-client">
+                <input style="display: none;" name="phone" value="{{this.name}}"> 
+                  <th scope="row">{{sum @index 1}}</th>
+                  <td class="bold">
+                      <img src="{{this.img}}" alt="">
+                      <input style="display: none;" name="img" type="text" class="form-control" value="{{this.img}}">
+                      {{this.name}}
+                      <input style="display: none;" name="nameproduct" type="text" class="form-control" value="{{this.name}}">
+                  </td>
+                  <td>
+                    <input name="quantity" class="input-number-client-oder" type="number" value="1">
+                  </td>
+                  <td class="price-oder-product bold">{{this.price}}đ</td>
+                  <input style="display: none;" name="price" type="text" class="form-control" value="{{this.price}}">
+              </tr>
+            {{/each}} 
+              <tr>
+                <th scope="row"></th>
+                <td colspan="2"></td>
+                <td class="bold">
+                    Tổng tiền:
+                    <span class="oder-client-quatity-price"></span>
+                </td>
+              </tr>
+            </tbody>
+            
+        </table>
+
+        <div class="mb-3">
+            <label for="userName" class="form-label bold">Nhập họ tên của bạn</label>
+            <input name="username" type="text" class="form-control" id="username" placeholder="Nhập tên....">
+        </div>
+        <div class="mb-3">
+            <label for="sdt" class="form-label bold">Nhập số điện thoại</label>
+            <input name="sdt" type="text" class="form-control" id="sdt" placeholder="Nhập số điện thoại">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label bold">Nhập địa chỉ Email</label>
+            <input name="email" type="email" class="form-control" id="email" placeholder="name@gmail.com">
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label bold">Nhập địa chỉ nhận hàng</label>
+            <input name="address" type="text" class="form-control" id="address" placeholder="nhập địa chỉ nhận hàng">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label bold">Nhập nội dung</label>
+            <input style="min-height: 100px;" name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></input>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">Đặt Hàng</button>
+          </div>
+    </div>
+</form>
+
+<script>
+
+  // mã javascript cho oder-client
+  function quatity_price_oder() {
+
+    var oder_quantity = document.getElementsByClassName('oder-client-quatity-price')[0];
+    var products = document.getElementsByClassName('product-oder-client');
+    var temp = 0;
+    var quatity_price = 0;
+    for (let index = 0; index < products.length; index++) {
+      
+      temp = products[index].getElementsByClassName('price-oder-product')[0].innerText;
+      var temp2 = parseFloat(temp);
+      quatity_price += temp2;
+     
+    }
+    quatity_price = quatity_price+'';
+    oder_quantity.innerText = quatity_price+'đ';
+  }
+  quatity_price_oder();
+</script>

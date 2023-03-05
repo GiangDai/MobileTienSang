@@ -1,0 +1,32 @@
+<body >
+    <!-- content -->
+    <section style="min-height: 551px;" id="products" class="wrapper">
+        <div class="products">
+            <ul>
+                {{#each mobilephone}}
+                <li class="main-product">
+                    <div style="display: none;" class="slug">
+                                        {{this.slug}}
+                                    </div>
+                    <div class="img-product">
+                        <img src="{{this.img}}" alt="">
+
+                    </div>
+                    <div class="content-product">
+                        <h3 class="content-product-h3">{{this.name}}</h3>
+                        <div class="content-produc-deltals">
+                            <div class="price">
+                                <span class="money">{{this.price}}đ</span>
+                            </div>
+                            <button type="button" class="btn btn-cart">Thêm Vào Giỏ Hàng</button>
+                        </div>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+            
+        </div>
+    </section>
+    
+
+</body>

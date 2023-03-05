@@ -1,0 +1,131 @@
+<style>
+    .mymobilephone, .oder1{
+        margin: 80px 100px;
+        
+    }
+    .table-mymobilephone{
+        width: 1000px;
+    }
+    img{
+        width: 50px;
+        
+    }
+    .name{
+        max-width: 150px;
+    }
+    .fade{
+        display: none;
+    }
+
+    .admin-option{
+        display: flex;
+        min-height: 630px;
+    }
+
+    .option{
+        margin-top: 80px;
+    }
+   .oder1{
+        min-width: 1000px;
+    } 
+    .oder1-nav th,td{
+        border: 1px solid;
+    }
+
+.oder1-nav th{
+    line-height: 1;
+}
+
+     .oder1 a{
+         
+         text-decoration: none;
+
+     }
+     .bold{
+        font-weight: 700;
+     }
+
+</style>
+
+<div class="admin-option">
+    <div class="option">
+        <ul class="nav flex-column">
+  <li class="nav-item">
+    <a class="bold nav-link active myphone-option" href="/admin">Điện thoại của tôi</a>
+  </li>
+  <li class="nav-item">
+    <a class="bold nav-link oder-option" href="/admin/oder">Đơn đặt</a>
+  </li>
+ <li class="nav-item">
+    <a class="bold nav-link add-phone" href="/admin/add">Thêm điện thoại mới</a>
+  </li>
+</ul>
+    </div>
+        <div class="oder1">
+            <b>Danh danh sách đơn đặt hàng</b>
+            <table class="table oder1-nav">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">tên</th>
+                        <th scope="col">ảnh</th>
+                        <th scope="col">giá</th>
+                        <th scope="col">người đặt</th>
+                        <th scope="col">số điện thoại</th>
+                        <th scope="col">địa chỉ</th>
+                        <th scope="col">email</th>
+                        <th scope="col"></th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each oder}}
+                    <tr>
+                        <th scope="row">{{sum @index 1}}</th>
+              
+                        <td>{{this.name}}</td>
+                        <td>
+                            <img src="{{this.img}}" alt="">
+                        </td>
+                        <td>{{this.price}}đ</td>
+                        <td>{{this.username}}</td>
+                        <td>{{this.phonenumber}}</td>
+                        <td style="max-width: 300px;">{{this.address}}</td>
+                        <td>{{this.email}}</td>
+                        <td >
+                            <button type="button" class=" confirm btn btn-primary" data-id="{{this._id}}" onclick="goDoSomething(this);">xác nhận</button>
+                            {{!-- <a class="btn btn-danger" href="#">hủy đơn</a> --}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+    <form name="form-confirm" method="post"></form>
+</div>
+
+
+
+<script>
+
+    // xử lí các chức năng 
+    
+    var confirm = document.getElementsByClassName('confirm')[0];
+    var form_confirm = document.forms['form-confirm'];
+    var confirmId;
+  
+    function goDoSomething(d){
+            //alert(d.getAttribute("data-id"));
+            confirmId = d.getAttribute("data-id");
+            //console.log(confirmId)
+            form_confirm.action = '/admin/oder/'+confirmId+'?_method=DELETE';
+            console.log(form_confirm);
+            form_confirm.submit();
+    }
+    
+  
+    
+
+
+</script>

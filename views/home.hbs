@@ -1,0 +1,179 @@
+<body>
+    <style>
+        .body-home, #aboutwe{
+            width: 1200px;
+            margin: 10px auto;
+        }
+        .slide{
+            margin: 10px auto;
+        }
+       
+       .sale-title{
+           margin-left: 136.637px;
+       }
+       .scroll_box{
+        height: 120px;
+        width: 400px;
+        height: 411px;
+        margin: 10px auto !important;
+        width: 1200px;
+        overflow: auto;
+        border: 1px solid #CCCCCC;
+        margin: 1em 0;
+        
+        }   
+        
+
+        #aboutwe{
+
+        }
+        .card{
+            display: block;
+            display: inline-block;
+            text-align: center;
+            margin-bottom: 20px;
+            
+        }
+        .contact{
+            margin: 40px 0px 50px 0;
+            font-weight: 700;
+        }
+
+    </style>
+    
+    <div class="body-home">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width: 1200px;">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img style="width: 1200px; height: 360px;" src="https://img3.thuthuatphanmem.vn/uploads/2019/10/08/banner-quang-cao-dien-thoai_103211774.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img style="width: 1200px; height: 360px;" src="	https://img3.thuthuatphanmem.vn/uploads/2019/10/08/banner-quang-cao-dien-thoai-iphone_103211414.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img style="width: 1200px; height: 360px;" src="	https://bizweb.dktcdn.net/100/384/782/themes/764040/assets/slider_2.jpg?1617347076987" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          
+            <div class="phone-sale">
+                <div class="title-sale">
+                    <h2>Săn sale mỗi ngày</h2>
+                </div>
+                <div class="scroll_box phone-sale">
+                    
+                    <section id="products" class="wrapper">
+
+                        <div class="products">
+                            <ul class="phone-sale" style="padding: 0px;">
+                                {{#each mobilephone}}
+                                <li class="main-product">
+                                    <div style="display: none;" class="slug">
+                                        {{this.slug}}
+                                    </div>
+                                    <div class="img-product">
+                                        <a href="/{{this.slug}}/details">
+                                        <img src="{{this.img}}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="content-product">
+                                        <a href="/{{this.slug}}/details">
+                                        <h3 class="content-product-h3">{{this.name}}</h3>
+                                        </a>
+                                        <div class="content-produc-deltals">
+                                            <div class="price">
+                                                <span class="money">{{this.price}}đ</span>
+                                            </div>
+                                            <button style="width: 165px;" type="button" class="btn btn-cart">Thêm Vào Giỏ Hàng</button>
+                                        </div>
+                                    </div>
+                                </li>
+                               {{/each}}
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="phone-popular">
+                <div class="title-popular">
+                    <h2>Điện thoại nổi bật nhất</h2>
+                </div>
+                <div class="scroll_box phone-popular">
+                    
+                    <section id="products" class="wrapper">
+
+                        <div class="products">
+                            <ul class="phone-sale" style="padding: 0px;">
+                                {{#each mobilephone}}
+                                <li class="main-product">
+                                    <div style="display: none;" class="slug">
+                                        {{this.slug}}
+                                    </div>
+                                    <div class="img-product">
+                                        <a href="/{{this.slug}}/details">
+                                        <img src="{{this.img}}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="content-product">
+                                        <a href="/{{this.slug}}/details">
+                                        <h3 class="content-product-h3">{{this.name}}</h3>
+                                        </a>
+                                        <div class="content-produc-deltals">
+                                            <div class="price">
+                                                <span class="money">{{this.price}}</span>
+                                            </div>
+                                            <button style="width: 165px;" type="button" class="btn btn-cart">Thêm Vào Giỏ Hàng</button>
+                                        </div>
+                                    </div>
+                                </li>
+                               {{/each}}
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+        </footer>
+    </div>
+    <div id="aboutwe">
+         <h2>Về chúng tôi</h2> 
+         <div class="contact">
+            
+            <div class="card"  style="width: 18rem;">
+                <img src="/images/giangadai.jpg" style="height:289px;" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Giàng A Đại</h5>
+                    <p class="card-text">
+                        <p>Nhân viên</p>
+                        <p>Liên hệ : 0814369763</p>
+                        <p>hoặc</p>
+                        <p class="btn btn-primary" style="background-color: #0260cd; color: white;">facebook
+                             <a target="_blank" href="https://www.facebook.com/profile.php?id=100075155888453"></a>
+                        </p>
+                    </p>
+                   
+                </div>
+            </div>
+            
+        </div> 
+        <div class="map">
+            <h2>Anh chị có thắc mắc hay vấn đề gì muốn đến trực tiếp cửa hàng thì xin vui lòng đi theo địa điểm (Mobilephone - Tiến Sáng)</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d945398.0034205373!2d102.82008081255846!3d22.241560335782356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x36d3358f883fe991%3A0x9fad8263ffdc15f7!2zQ-G7rWEgaMOgbmcgxJFp4buHbiB0aG_huqFpIFRp4bq_biBTw6FuZw!5e0!3m2!1svi!2s!4v1677677668101!5m2!1svi!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+    </div>
+
+</body>
